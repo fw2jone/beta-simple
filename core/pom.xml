@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.triones</groupId>
-    <artifactId>beta-simple</artifactId>
-    <version>0.0.1</version>
+    <artifactId>core</artifactId>
+    <version>0.0.1-beta</version>
     <packaging>jar</packaging>
-    <name>beta-simple</name>
-    <description> This is a simple project. Maybe it's a new beginning. </description>
+    <name>core</name>
+    <description> This is a core module. </description>
 
     <properties>
         <!-- JDK版本 -->

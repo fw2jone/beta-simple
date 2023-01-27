@@ -1,5 +1,4 @@
-# beta-simple
+# core
 
 # description
-This is a simple project.
-Maybe it's a new beginning.
+As the name suggests, this is a public dependency project, introduced as a Jar package
