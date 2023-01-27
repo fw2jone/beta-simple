@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.triones</groupId>
+    <artifactId>gate</artifactId>
+    <version>0.0.1-beta</version>
+    <packaging>jar</packaging>
+    <name>gate</name>
+    <description> This is a simple gateway. It's API Rule. </description>
+
+    <properties>
+        <!-- JDK版本 -->
+        <java.version>17</java.version>
+        <!-- 跳过单元测试 -->
+        <skipTests>true</skipTests>
+
+        <!-- Spring -->
+        <springboot>3.0.1</springboot>
+        <springcloud>2022.0.0</springcloud>
+
+        <!-- common -->
+        <socket.io>1.7.22</socket.io>
+        <lombok>1.18.24</lombok>
+
+        <!-- triones -->
+        <triones.core>0.0.1-beta</triones.core>
+
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${springboot}</version>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${springcloud}</version>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.corundumstudio.socketio</groupId>
+                <artifactId>netty-socketio</artifactId>
+                <version>${socket.io}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.triones</groupId>
+                <artifactId>core</artifactId>
+                <version>${triones.core}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.graalvm.buildtools</groupId>
+                    <artifactId>native-maven-plugin</artifactId>
+                </plugin>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <configuration>
+                        <skip>true</skip>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+</project>
