@@ -3,12 +3,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.triones</groupId>
-    <artifactId>user</artifactId>
+    <groupId>com.triones.customer</groupId>
+    <artifactId>customer</artifactId>
     <version>0.0.1-beta</version>
-    <packaging>jar</packaging>
-    <name>user</name>
-    <description> This is a simple Auth Center.</description>
+    <packaging>pom</packaging>
+    <name>customer</name>
+    <description> This is a simple customer Auth Center.</description>
+
+    <modules>
+        <module>customer-service</module>
+        <module>customer-api</module>
+    </modules>
 
     <properties>
         <!-- JDK版本 -->
@@ -33,20 +38,13 @@
         <dependencies>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
+                <artifactId>spring-boot-starter-web</artifactId>
                 <version>${springboot}</version>
-                <scope>import</scope>
             </dependency>
             <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${springcloud}</version>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>com.corundumstudio.socketio</groupId>
-                <artifactId>netty-socketio</artifactId>
-                <version>${socket.io}</version>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <version>${springboot}</version>
             </dependency>
             <dependency>
                 <groupId>com.triones</groupId>
@@ -61,19 +59,35 @@
         </dependencies>
     </dependencyManagement>
 
+
+
     <build>
         <pluginManagement>
             <plugins>
                 <plugin>
                     <groupId>org.graalvm.buildtools</groupId>
                     <artifactId>native-maven-plugin</artifactId>
+                    <version>0.9.19</version>
                 </plugin>
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>3.0.1</version>
                     <configuration>
-                        <skip>true</skip>
+                        <excludes>
+                            <exclude>
+                                <groupId>org.projectlombok</groupId>
+                                <artifactId>lombok</artifactId>
+                            </exclude>
+                        </excludes>
                     </configuration>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>repackage</goal>
+                            </goals>
+                        </execution>
+                    </executions>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>

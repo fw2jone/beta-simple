@@ -1,13 +1,13 @@
-package com.triones.dipper.yp54;
+package com.triones.customer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class YP54Application {
+public class CustomerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(YP54Application.class, args);
+        SpringApplication.run(CustomerApplication.class, args);
     }
 
 }

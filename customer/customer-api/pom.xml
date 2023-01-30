@@ -4,12 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.triones.dipper</groupId>
-        <artifactId>yp54-main</artifactId>
+        <groupId>com.triones.customer</groupId>
+        <artifactId>customer</artifactId>
         <version>0.0.1-beta</version>
     </parent>
 
-    <artifactId>main-api</artifactId>
+    <artifactId>customer-api</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -19,7 +19,7 @@
     </properties>
 
     <build>
-        <finalName>main-api</finalName>
+        <finalName>customer-api</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
