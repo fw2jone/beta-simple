@@ -84,3 +84,36 @@ public class R extends JSONObject {
     }
 
 }
+
+class Solution {
+
+    public static void main(String[] args) {
+        System.out.println(countAndSay(1));
+        System.out.println(countAndSay(2));
+        System.out.println(countAndSay(3));
+        System.out.println(countAndSay(4));
+        System.out.println(countAndSay(5));
+        System.out.println(countAndSay(6));
+        System.out.println(countAndSay(7));
+        System.out.println(countAndSay(8));
+        System.out.println(countAndSay(9));
+    }
+
+    public static String countAndSay(int n) {
+        long num = 1;
+        for (int i = 1; i < n; i++) {
+            long temp = 1, modl = num % 10, cnt = 0, tempNum = 0;
+            while(num > 0) {
+                long mod = num % 10; num /= 10;
+                if (modl != mod) {
+                    tempNum += temp * modl; temp *= 10;
+                    tempNum += cnt * temp; temp *= 10; cnt = 0; modl = mod;
+                }
+                cnt++;
+            }
+            tempNum += (temp * modl); temp *= 10; tempNum += (cnt * temp);
+            num = tempNum;
+        }
+        return Long.valueOf(num).toString();
+    }
+}

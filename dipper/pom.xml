@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.triones</groupId>
+    <groupId>com.triones.dipper</groupId>
     <artifactId>dipper</artifactId>
     <version>0.0.1-beta</version>
     <packaging>pom</packaging>
@@ -30,6 +30,7 @@
         <!-- common -->
         <socket.io>1.7.22</socket.io>
         <lombok>1.18.24</lombok>
+        <fastjson2>2.0.22</fastjson2>
 
         <!-- triones -->
         <triones.core>0.0.1-beta</triones.core>
@@ -67,6 +68,11 @@
                 <artifactId>lombok</artifactId>
                 <version>${lombok}</version>
             </dependency>
+            <dependency>
+                <groupId>com.alibaba.fastjson2</groupId>
+                <artifactId>fastjson2</artifactId>
+                <version>${fastjson2}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -76,13 +82,39 @@
                 <plugin>
                     <groupId>org.graalvm.buildtools</groupId>
                     <artifactId>native-maven-plugin</artifactId>
+                    <version>0.9.19</version>
                 </plugin>
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
-                    <configuration>
-                        <skip>true</skip>
-                    </configuration>
+                    <version>3.0.1</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>repackage</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>build-helper-maven-plugin</artifactId>
+                    <version>3.3.0</version>
+                    <executions>
+                        <execution>
+                            <id>add-source</id>
+                            <phase>generate-sources</phase>
+                            <goals>
+                                <goal>add-source</goal>
+                            </goals>
+                            <configuration>
+                                <sources>
+                                    <source>src/java/generated</source>
+                                    <source>src/java/main</source>
+                                </sources>
+                            </configuration>
+                        </execution>
+                    </executions>
                 </plugin>
             </plugins>
         </pluginManagement>
